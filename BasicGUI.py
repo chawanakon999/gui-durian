@@ -60,7 +60,7 @@ def sumdata():
 
 GUI = Tk()
 GUI.geometry('600x600')  #ปรับขนาด GUI #เครื่องหมายคูณจะใช้ x ตัวเล็ก # 500 = แนวตั้ง 300 = แนวนอน
-GUI.title('โปรแกรมของพัตเตอร์')
+GUI.title('โปรแกรมสำหรับแม่ค้าทุเรียน v.0.0.1')
 
 file =PhotoImage(file='') #ใส่รูป
 IMG= Label(GUI,image=file,text='')
@@ -70,7 +70,7 @@ IMG.pack()
 L1 = Label(GUI,text='โปรแกรมคำนวณทุเรียน',font=('TH SarabunPSK',30,'bold'),fg="red")
 L1.pack() # .place(x,y) ใส่ location , .grid(row=0,column=0)
 
-L2 = Label(GUI,text='กรุณากรอกจำนวนทุเรียน',font=('TH SarabunPSK',20))
+L2 = Label(GUI,text='กรุณากรอกจำนวนทุเรียน (กิโลกรัม)',font=('TH SarabunPSK',20))
 L2.pack()
 
 v_quantity = StringVar() #ตำแหน่งตัวแปรที่ใช้เก็บข้อมูลของช่องกรอก
@@ -110,12 +110,12 @@ def SummaryData(event):
 	#pop up 
 	sm = sumdata()
 	title = 'ยอดสรุปรวมทั้งหมด'
-	text = 'จำนวนที่ขายได้ทั้งหมด: {} กิโลกรัม\nยอดขาย: {:,.2f} บาท'.format(sm[0],sm[1])
+	text = 'จำนวนที่ขายได้ทั้งหมด: {} กิโลกรัม\nยอดขาย: {:,.2f} บาท'.format(sm[0],sm[1]) # \n ขึ้นบรรทัดใหม่
 	messagebox.showinfo(title,text)
 
 
 GUI.bind('<F1>',SummaryData) #เป็นการตรวจสอบว่ามีการกดอะไรบ้าง
-
+GUI.bind('<F2>',SummaryData)
 
 E1.focus()  #ให้ cursor ไปยังตำแหน่งของ E1
 GUI.mainloop()  #mainloop มีไว้เพื่อให้ software run ตลอดเวลา 
